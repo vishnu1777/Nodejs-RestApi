@@ -1,7 +1,7 @@
 // This is used because the default error displayed will be in html format
 // to convert that errror message to readable format we use error handler
 // we convert the error to json and pass it to our server
-import { constant } from "../constants";
+const constant = require("../constants");
 const errorHandler = (err, req, res, next) => {
   const status = res.statusCode ? res.statusCode : 500;
   switch (status) {

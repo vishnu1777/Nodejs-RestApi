@@ -7,9 +7,11 @@ const {
   deleteContact,
   updateContact,
 } = require("../controllers/contactController");
+const validateToken = require("../middleware/validateTokenHandler");
 
 // Get is used to get the data
 // Since we are routing to same route ie / or /:id we can merge it in single way
+router.use(validateToken); // this is used if all the routes are private and should be validated
 router.route("/").get(getContacts).post(createContact);
 
 // :id is dynamic id form client side and it is used to get single contact
