@@ -10,6 +10,7 @@ const User = require("../models/userModal");
 // registerer logic starts here
 const registerUser = asyncHandler(async (req, res) => {
   const { userName, email, password } = req.body;
+  console.log("user name from frontend", userName);
   if (!userName || !email || !password) {
     res.status(400);
     throw new Error("All fields are mandatory");
