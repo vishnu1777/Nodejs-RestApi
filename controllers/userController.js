@@ -34,7 +34,7 @@ const registerUser = asyncHandler(async (req, res) => {
   if (user) {
     res.status(201).json({ _id: user._id, email: user.email });
   } else {
-    res.status(400);
+    res.status(400).json({ message: "oops something went wrong" });
     throw new Error("User Data is not valid");
   }
   res.status(201).json({ message: "Register the user" });
@@ -44,7 +44,7 @@ const registerUser = asyncHandler(async (req, res) => {
 const loginUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
   if (!email || !password) {
-    res.status(400);
+    res.status(400).json({ message: "oops something went wrong" });
     throw new Error("All fields are mandatory");
   }
   // serch for the user
@@ -69,7 +69,7 @@ const loginUser = asyncHandler(async (req, res) => {
     );
     res.status(200).json({ accessToken });
   } else {
-    res.status(401);
+    res.status(400).json({ message: "oops something went wrong" });
     throw new Error("Credentials are not valid");
   }
 });
